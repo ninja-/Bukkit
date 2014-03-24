@@ -16,6 +16,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
+import java.net.URLClassLoader;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.Server;
@@ -358,6 +359,15 @@ public final class JavaPluginLoader implements PluginLoader {
 
                 for (String name : names) {
                     removeClass(name);
+                }
+            }
+            
+            if (cloader instanceof URLClassLoader) {
+                URLClassLoader urloader = (URLClassLoader) cloader;
+                try {
+                    urloader.close();
+                } catch (Exception e) {
+                    
                 }
             }
         }
