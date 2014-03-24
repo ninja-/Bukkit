@@ -366,7 +366,7 @@ public final class JavaPluginLoader implements PluginLoader {
                 URLClassLoader urloader = (URLClassLoader) cloader;
                 try {
                     urloader.close();
-                } catch (Exception e) {
+                } catch (Exception ignored) {
                     
                 }
             }
